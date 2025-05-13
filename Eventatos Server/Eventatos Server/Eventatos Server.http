@@ -1,0 +1,6 @@
+@Eventatos_Server_HostAddress = http://localhost:5281
+
+GET {{Eventatos_Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
